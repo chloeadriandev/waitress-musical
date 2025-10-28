@@ -1,0 +1,126 @@
+@use "../../styles/variables";
+@use "../../styles/mixins";
+@use "../../styles/functions";
+
+.contentrow {
+    @include mixins.flex(row, center, stretch);
+    width: 100dvw;
+
+    &>div {
+        position: relative;
+        flex: 0 0 50%;
+
+        & img {
+            position: absolute !important;
+            inset: 0;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+        }
+    }
+
+    &>article {
+        @include mixins.flex(column, flex-start, stretch);
+        gap: functions.pixelsToRem(20);
+        flex: 1 1 50%;
+
+        &>h2 {
+            @include mixins.title;
+            font-size: functions.pixelsToRem(60);
+        }
+
+        &>p {
+            font-size: functions.pixelsToRem(variables.$body-desktop);
+        }
+
+        &>div {
+            @include mixins.flex(column, flex-start, flex-start);
+            gap: functions.pixelsToRem(10);
+
+            &>p {
+                &[data-type="quote"] {
+                    font-size: functions.pixelsToRem(variables.$body-desktop);
+                }
+
+                &[data-type="source"] {
+                    @include mixins.title;
+                    font-size: functions.pixelsToRem(40);
+                }
+            }
+        }
+    }
+
+    &:first-child {
+        & > article {
+            margin-bottom: functions.pixelsToRem(100);
+        }
+    }
+
+    &:not(:first-child):not(:last-child) {
+        margin-top: functions.pixelsToRem(-100);
+
+        & > article {
+            margin: functions.pixelsToRem(100) 0;
+        }
+    }
+
+    &:last-child {
+        margin-top: functions.pixelsToRem(-100);
+        
+        & > article {
+            margin-top: functions.pixelsToRem(100);
+        }
+    }
+
+    &:nth-child(odd) {
+        &>article {
+            padding: functions.pixelsToRem(50) 0 functions.pixelsToRem(50) functions.pixelsToRem(50);
+
+            &>h2 {
+                background: variables.$duckling;
+                color: variables.$raspberry;
+                padding: functions.pixelsToRem(40) functions.pixelsToRem(variables.$margin-desktop) functions.pixelsToRem(15) functions.pixelsToRem(40);
+            }
+
+            &>p {
+                margin-right: functions.pixelsToRem(variables.$margin-desktop);
+            }
+
+            &>div {
+                background: variables.$blush;
+                padding: functions.pixelsToRem(40) functions.pixelsToRem(variables.$margin-desktop) functions.pixelsToRem(35) functions.pixelsToRem(40);
+
+                &>p[data-type="source"] {
+                    color: variables.$blueberry;
+                }
+            }
+        }
+    }
+
+    &:nth-child(even) {
+        flex-direction: row-reverse;
+
+        &>article {
+            padding: functions.pixelsToRem(50) functions.pixelsToRem(50) functions.pixelsToRem(50) 0;
+
+            &>h2 {
+                background: variables.$blush;
+                color: variables.$blueberry;
+                padding: functions.pixelsToRem(40) functions.pixelsToRem(40) functions.pixelsToRem(15) functions.pixelsToRem(variables.$margin-desktop);
+            }
+
+            &>p {
+                margin-left: functions.pixelsToRem(variables.$margin-desktop);
+            }
+
+            &>div {
+                background: variables.$duckling;
+                padding: functions.pixelsToRem(40) functions.pixelsToRem(40) functions.pixelsToRem(35) functions.pixelsToRem(variables.$margin-desktop);
+
+                &>p[data-type="source"] {
+                    color: variables.$raspberry;
+                }
+            }
+        }
+    }
+}
