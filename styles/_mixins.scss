@@ -1,3 +1,4 @@
+@use "../styles/variables";
 @use "../styles/functions";
 
 @mixin flex($direction: row, $justify: flex-start, $align: flex-start) {
@@ -38,4 +39,9 @@
     &:focus::after {
         width: 100%;
     }
+}
+
+@mixin title() {
+    font-family: canter, canter Fallback;
+    text-transform: uppercase;
 }

@@ -3,6 +3,7 @@
     margin: 0;
     padding: 0;
     text-decoration: none;
+    font-family: Archivo Narrow, Archivo Narrow Fallback;
     font-weight: normal;
     scroll-behavior: smooth;
 }
@@ -10,4 +11,8 @@
 html {
     max-width: 100dvw;
     overflow-x: hidden;
+}
+
+img {
+    position: relative!important;
 }

@@ -1,9 +1,15 @@
 import "./globals.scss";
 import styles from "./layout.module.scss";
-import { Open_Sans } from "next/font/google";
+import localFont from "next/font/local";
+import { Archivo_Narrow } from "next/font/google";
 import type { Metadata } from "next";
 
-const openSans = Open_Sans();
+ 
+const archivoNarrow = Archivo_Narrow();
+ 
+const canter = localFont({
+  src: "../public/fonts/canter.otf"
+})
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,7 +22,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={openSans.className}>
+    <html lang="en" className={canter.className + " " + archivoNarrow.className}>
       <body className={styles.body}>
         {children}
       </body>
