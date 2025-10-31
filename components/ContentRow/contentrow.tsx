@@ -32,7 +32,7 @@ const ContentRow = ({ content }: { content: Article | TourDate }) => {
     return (
         <section ref={rowRef} className={styles.contentrow} data-visible={rowVisible}>
             <div>
-                <Image src={`/images/${content.photo}.jpg`} alt="" fill={true} />
+                <Image src={`/images/${content.photo}.jpg`} alt="" fill={true} sizes="(max-width: 900px) 100vw, 50vw" />
             </div>
             {content.type === "article" ?
                 <article>
