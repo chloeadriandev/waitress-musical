@@ -1,5 +1,6 @@
 @use "../styles/variables";
 @use "../styles/functions";
+@use "../styles/breakpoints";
 
 @mixin flex($direction: row, $justify: flex-start, $align: flex-start) {
     display: flex;
@@ -73,6 +74,11 @@
         color: white;
         z-index: 1;
         position: relative;
+
+        @include breakpoints.mobile {
+            font-size: functions.pixelsToRem(50);
+            padding: functions.pixelsToRem(25) functions.pixelsToRem(25) functions.pixelsToRem(15);
+        }
     }
 }
 

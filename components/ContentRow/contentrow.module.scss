@@ -1,10 +1,15 @@
 @use "../../styles/variables";
 @use "../../styles/mixins";
 @use "../../styles/functions";
+@use "../../styles/breakpoints";
 
 .contentrow {
     @include mixins.flex(row, center, stretch);
     width: 100dvw;
+
+    @include breakpoints.tablet {
+        flex-direction: column;
+    }
 
     &>div {
         @include mixins.transition;
@@ -13,12 +18,20 @@
         position: relative;
         flex: 0 0 50%;
 
+        @include breakpoints.tablet {
+            aspect-ratio: 4/2.5;
+        }
+
         & img {
             position: absolute !important;
             inset: 0;
             object-fit: cover;
             object-position: center;
             display: block;
+
+            @include breakpoints.tablet {
+                object-position: center 25%;
+            }
         }
     }
 
@@ -39,6 +52,10 @@
             @include mixins.flex(column, flex-start, flex-start);
             font-size: functions.pixelsToRem(variables.$body-desktop);
             line-height: 130%;
+
+            @include breakpoints.mobile {
+                font-size: functions.pixelsToRem(variables.$body-mobile);
+            }
         }
 
         &>div {
@@ -48,11 +65,19 @@
             &>p {
                 &[data-type="quote"] {
                     font-size: functions.pixelsToRem(variables.$body-desktop);
+
+                    @include breakpoints.mobile {
+                        font-size: functions.pixelsToRem(variables.$body-mobile);
+                    }
                 }
 
                 &[data-type="source"] {
                     @include mixins.title;
                     font-size: functions.pixelsToRem(40);
+
+                    @include breakpoints.mobile {
+                        font-size: functions.pixelsToRem(30);
+                    }
                 }
             }
         }
@@ -65,22 +90,42 @@
     &:first-child {
         &>article {
             margin-bottom: functions.pixelsToRem(100);
+
+            @include breakpoints.tablet {
+                margin-bottom: 0;
+            }
         }
     }
 
     &:not(:first-child):not(:last-child) {
         margin-top: functions.pixelsToRem(-100);
 
+        @include breakpoints.tablet {
+            margin-top: 0;
+        }
+
         &>article {
             margin: functions.pixelsToRem(100) 0;
+
+            @include breakpoints.tablet {
+                margin: 0;
+            }
         }
     }
 
     &:last-child {
         margin-top: functions.pixelsToRem(-100);
 
+        @include breakpoints.tablet {
+            margin-top: 0;
+        }
+
         &>article {
             margin-top: functions.pixelsToRem(100);
+
+            @include breakpoints.tablet {
+                margin-top: 0;
+            }
         }
     }
 
@@ -92,18 +137,38 @@
                 background: variables.$duckling;
                 color: variables.$raspberry;
                 padding: functions.pixelsToRem(40) functions.pixelsToRem(variables.$margin-desktop) functions.pixelsToRem(15) functions.pixelsToRem(40);
+
+                @include breakpoints.mobile {
+                    padding: functions.pixelsToRem(30) functions.pixelsToRem(variables.$margin-mobile) functions.pixelsToRem(15) functions.pixelsToRem(30);
+                }
             }
 
             &>p {
-                margin-right: functions.pixelsToRem(variables.$margin-desktop);
+                margin: 0 functions.pixelsToRem(variables.$margin-desktop) 0 functions.pixelsToRem(40);
+
+                @include breakpoints.mobile {
+                    margin: 0 functions.pixelsToRem(variables.$margin-mobile) 0 functions.pixelsToRem(30);
+                }
             }
 
             &>div {
                 background: variables.$blush;
                 padding: functions.pixelsToRem(40) functions.pixelsToRem(variables.$margin-desktop) functions.pixelsToRem(35) functions.pixelsToRem(40);
 
+                @include breakpoints.mobile {
+                    padding: functions.pixelsToRem(30) functions.pixelsToRem(variables.$margin-mobile) functions.pixelsToRem(30) functions.pixelsToRem(30);
+                }
+
                 &>p[data-type="source"] {
                     color: variables.$blueberry;
+                }
+            }
+
+            &>a {
+                margin-left: functions.pixelsToRem(40);
+
+                @include breakpoints.mobile {
+                    margin-left: functions.pixelsToRem(30);
                 }
             }
         }
@@ -124,6 +189,10 @@
     &:nth-child(even) {
         flex-direction: row-reverse;
 
+        @include breakpoints.tablet {
+            flex-direction: column;
+        }
+
         &>article {
             padding: functions.pixelsToRem(50) functions.pixelsToRem(50) functions.pixelsToRem(50) 0;
 
@@ -131,15 +200,27 @@
                 background: variables.$blush;
                 color: variables.$blueberry;
                 padding: functions.pixelsToRem(40) functions.pixelsToRem(40) functions.pixelsToRem(15) functions.pixelsToRem(variables.$margin-desktop);
+
+                @include breakpoints.mobile {
+                    padding: functions.pixelsToRem(30) functions.pixelsToRem(30) functions.pixelsToRem(15) functions.pixelsToRem(variables.$margin-mobile);
+                }
             }
 
             &>p {
                 margin-left: functions.pixelsToRem(variables.$margin-desktop);
+
+                @include breakpoints.mobile {
+                    margin-left: functions.pixelsToRem(variables.$margin-mobile);
+                }
             }
 
             &>div {
                 background: variables.$duckling;
                 padding: functions.pixelsToRem(40) functions.pixelsToRem(40) functions.pixelsToRem(35) functions.pixelsToRem(variables.$margin-desktop);
+
+                @include breakpoints.mobile {
+                    padding: functions.pixelsToRem(30) functions.pixelsToRem(30) functions.pixelsToRem(25) functions.pixelsToRem(variables.$margin-mobile);
+                }
 
                 &>p[data-type="source"] {
                     color: variables.$raspberry;
@@ -147,7 +228,11 @@
             }
 
             &>a {
-                margin-left: functions.pixelsToRem(80);
+                margin-left: functions.pixelsToRem(variables.$margin-desktop);
+
+                @include breakpoints.mobile {
+                    margin-left: functions.pixelsToRem(variables.$margin-mobile);
+                }
             }
         }
 

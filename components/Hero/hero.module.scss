@@ -1,6 +1,7 @@
 @use "../../styles/variables";
 @use "../../styles/mixins";
 @use "../../styles/functions";
+@use "../../styles/breakpoints";
 
 .hero {
     position: relative;
@@ -34,10 +35,18 @@
                 height: 25dvh !important;
                 max-width: 50%;
 
+                @include breakpoints.mobile {
+                    max-width: 110%;
+                }
+
                 &:first-child {
                     object-position: top;
                     left: -25% !important;
                     animation: slideFromRight 0.8s ease both;
+
+                    @include breakpoints.mobile {
+                        left: 0 !important;
+                    }
                 }
 
                 &:last-child {
@@ -45,6 +54,10 @@
                     object-position: top;
                     left: 75% !important;
                     animation: slideFromRightFlipped 0.8s ease 1.6s both;
+
+                    @include breakpoints.mobile {
+                        left: 0 !important;
+                    }
                 }
             }
 
@@ -58,16 +71,25 @@
                 z-index: 2;
                 animation: slideFromRightCentered 0.8s ease 0.8s both;
 
+                @include breakpoints.mobile {
+                    margin: calc(functions.pixelsToRem(variables.$margin-mobile) / 2) functions.pixelsToRem(variables.$margin-mobile) 0;
+                }
+
                 &>img {
                     max-width: 85% !important;
                     height: fit-content !important;
                     object-fit: contain;
+
+                    @include breakpoints.mobile {
+                        max-width: 100% !important;
+                    }
                 }
 
                 &>h1 {
                     @include mixins.title;
                     font-size: functions.pixelsToRem(50);
                     color: variables.$blueberry;
+                    text-align: center;
                 }
             }
         }
@@ -82,6 +104,10 @@
             position: relative;
             overflow: hidden;
             animation: slideFromBottom 0.8s ease 2.4s both;
+
+            @include breakpoints.mobile {
+                padding-bottom: functions.pixelsToRem(20);
+            }
 
             &::before {
                 display: block;
@@ -105,6 +131,10 @@
                 font-size: functions.pixelsToRem(70);
                 color: white;
                 z-index: 2;
+
+                @include breakpoints.mobile {
+                    font-size: functions.pixelsToRem(50);
+                }
             }
         }
     }
@@ -122,7 +152,7 @@
 
 @keyframes slideFromRightCentered {
     from {
-        transform: translate(100%, -50%);
+        transform: translate(120%, -50%);
     }
 
     to {
