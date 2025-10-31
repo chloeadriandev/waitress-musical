@@ -22,7 +22,7 @@
     transition: $property 0.3s ease;
 }
 
-@mixin link($color: black) {
+@mixin link($color: variables.$raspberry) {
     @include flex(column, flex-start, stretch);
 
     &::after {

@@ -14,87 +14,138 @@
     }
 
     &>div {
-        @include mixins.flex(column, flex-start, stretch);
+        @include mixins.flex(column, flex-start, flex-start);
         position: absolute;
         height: 100%;
         width: 100%;
         top: 0;
         left: 0;
-        gap: functions.pixelsToRem(40);
-
-        &>header {
-            @include mixins.flex(column, center, center);
-            gap: functions.pixelsToRem(10);
-            position: relative;
-            max-height: 50%;
-            margin: functions.pixelsToRem(variables.$margin-desktop) functions.pixelsToRem(variables.$margin-desktop) 0 functions.pixelsToRem(variables.$margin-desktop);
-
-            &>img {
-                max-width: 75% !important;
-                height: fit-content !important;
-                object-fit: contain;
-            }
-
-            &>h1 {
-                @include mixins.title;
-                font-size: functions.pixelsToRem(50);
-                color: variables.$blueberry;
-            }
-        }
+        overflow: hidden;
 
         &>div {
-            @include mixins.flex;
-            gap: functions.pixelsToRem(variables.$margin-desktop);
-            margin: 0 functions.pixelsToRem(variables.$margin-desktop);
+            @include mixins.flex(column, space-between, stretch);
+            height: 100%;
+            width: 100%;
+            position: relative;
 
             &>img {
-                width: 50% !important;
+                flex: 1;
                 object-fit: contain;
-                z-index: 1;
+                height: 25dvh !important;
+                max-width: 50%;
+
+                &:first-child {
+                    object-position: top;
+                    left: -25% !important;
+                    animation: slideFromRight 0.8s ease both;
+                }
+
+                &:last-child {
+                    transform: rotate(-180deg);
+                    object-position: top;
+                    left: 75% !important;
+                    animation: slideFromRightFlipped 0.8s ease 1.6s both;
+                }
             }
 
-            &>p {
-                @include mixins.title;
-                width: 50%;
-                color: variables.$blueberry;
-                font-size: functions.pixelsToRem(70);
+            &>header {
+                @include mixins.flex(column, center, center);
+                gap: functions.pixelsToRem(10);
+                position: absolute;
+                margin: calc(functions.pixelsToRem(variables.$margin-desktop) / 2) functions.pixelsToRem(variables.$margin-desktop) 0;
+                top: 50%;
+                transform: translateY(-50%);
+                z-index: 2;
+                animation: slideFromRightCentered 0.8s ease 0.8s both;
+
+                &>img {
+                    max-width: 85% !important;
+                    height: fit-content !important;
+                    object-fit: contain;
+                }
+
+                &>h1 {
+                    @include mixins.title;
+                    font-size: functions.pixelsToRem(50);
+                    color: variables.$blueberry;
+                }
             }
         }
 
-        &>button {
-            @include mixins.flex(row, flex-end, center);
+        &>a {
+            @include mixins.flex(row, center, center);
             width: 100%;
             background: variables.$blueberry;
-            padding: calc(functions.pixelsToRem(variables.$margin-desktop) / 2) functions.pixelsToRem(variables.$margin-desktop);
+            padding: functions.pixelsToRem(30) functions.pixelsToRem(variables.$margin-desktop) functions.pixelsToRem(15);
             border: none;
             cursor: pointer;
-            position: absolute;
-            bottom: 0;
+            position: relative;
+            overflow: hidden;
+            animation: slideFromBottom 0.8s ease 2.4s both;
 
-            &>div {
-                @include mixins.flex(row, center, center);
+            &::before {
+                display: block;
+                content: "";
+                width: 100%;
+                height: 100%;
+                background: variables.$raspberry;
+                position: absolute;
+                bottom: 0;
+                left: -100%;
+                transition: left 0.5s ease;
+            }
 
-                &>span {
-                    @include mixins.title;
-                    color: white;
-                }
+            &:hover::before,
+            &:focus::before {
+                left: 0;
+            }
 
-                &[data-breakpoint="desktop"] {
-                    gap: functions.pixelsToRem(30);
-
-                    &>span {
-                        font-size: functions.pixelsToRem(70);
-                    }
-
-                    &>svg {
-                        width: functions.pixelsToRem(50);
-                    }
-                }
-
-                &[data-breakpoint="mobile"] {
-                    display: none;
-                }
+            &>span {
+                @include mixins.title;
+                font-size: functions.pixelsToRem(70);
+                color: white;
+                z-index: 2;
             }
         }
+    }
+}
+
+@keyframes slideFromRight {
+    from {
+        transform: translateX(100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideFromRightCentered {
+    from {
+        transform: translate(100%, -50%);
+    }
+
+    to {
+        transform: translate(0, -50%);
+    }
+}
+
+@keyframes slideFromRightFlipped {
+    from {
+        transform: translateX(100%) rotate(-180deg);
+    }
+
+    to {
+        transform: translateX(0) rotate(-180deg);
+    }
+}
+
+@keyframes slideFromBottom {
+    from {
+        margin-bottom: -50%;
+    }
+
+    to {
+        margin-bottom: 0;
     }
 }

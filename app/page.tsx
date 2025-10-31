@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <main className={styles.main}>
       <Hero />
-      <div>
+      <div id="content">
         {[...articles, ...dates].map(article => <ContentRow content={article} key={article.photo} />)}
       </div>
       <Footer />
