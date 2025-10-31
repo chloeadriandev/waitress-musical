@@ -7,6 +7,9 @@
     width: 100dvw;
 
     &>div {
+        @include mixins.transition;
+        transform: translateX(0);
+        opacity: 1;
         position: relative;
         flex: 0 0 50%;
 
@@ -21,6 +24,9 @@
 
     &>article {
         @include mixins.flex(column, flex-start, stretch);
+        @include mixins.transition;
+        transform: translateX(0);
+        opacity: 1;
         gap: functions.pixelsToRem(20);
         flex: 1 1 50%;
 
@@ -101,6 +107,18 @@
                 }
             }
         }
+
+        &[data-visible="false"] {
+            &>div {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+
+            &>article {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+        }
     }
 
     &:nth-child(even) {
@@ -130,6 +148,18 @@
 
             &>a {
                 margin-left: functions.pixelsToRem(80);
+            }
+        }
+
+        &[data-visible="false"] {
+            &>div {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+
+            &>article {
+                transform: translateX(-100%);
+                opacity: 0;
             }
         }
     }

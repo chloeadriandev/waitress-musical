@@ -1,11 +1,36 @@
+"use client"
+
 import styles from "./contentrow.module.scss";
 import { Article, TourDate } from "@/lib/types";
 import Image from "next/image";
 import Link from "next/link";
+import { useState, useEffect, useRef } from "react";
 
 const ContentRow = ({ content }: { content: Article | TourDate }) => {
+    const [rowVisible, setRowVisible] = useState(false);
+    const rowRef = useRef(null);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.target === rowRef.current && entry.isIntersecting) {
+                        setRowVisible(true);
+                    }
+                });
+            },
+            { threshold: 0.2 }
+        );
+
+        if (rowRef.current) {
+            observer.observe(rowRef.current);
+        }
+
+        return () => observer.disconnect();
+    }, []);
+
     return (
-        <section className={styles.contentrow}>
+        <section ref={rowRef} className={styles.contentrow} data-visible={rowVisible}>
             <div>
                 <Image src={`/images/${content.photo}.jpg`} alt="" fill={true} />
             </div>
