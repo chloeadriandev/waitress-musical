@@ -1,0 +1,35 @@
+@use "../../styles/variables";
+@use "../../styles/mixins";
+@use "../../styles/functions";
+
+.footer {
+    @include mixins.flex(row, center, center);
+    gap: functions.pixelsToRem(5);
+    background: variables.$blueberry;
+    padding: functions.pixelsToRem(10) functions.pixelsToRem(80) functions.pixelsToRem(2.5) functions.pixelsToRem(80);
+
+    &>span[data-type="text"] {
+        @include mixins.title;
+        font-size: functions.pixelsToRem(30);
+        color: white;
+        margin-bottom: functions.pixelsToRem(2.5)
+    }
+
+    &>span[data-type="heart"] {
+        font-size: functions.pixelsToRem(35);
+        margin-bottom: functions.pixelsToRem(15);
+        color: white;
+    }
+
+    &>a {
+        @include mixins.link(variables.$blush);
+        @include mixins.title;
+        font-size: functions.pixelsToRem(30);
+        color: white;
+        position: relative;
+
+        &:hover {
+            color: variables.$blush;
+        }
+    }
+}

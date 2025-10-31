@@ -3,6 +3,7 @@ import { articles } from "@/lib/articles";
 import { dates } from "@/lib/dates";
 import Hero from "@/components/Hero/hero";
 import ContentRow from "@/components/ContentRow/contentrow";
+import Footer from "@/components/Footer/footer";
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
       <div>
         {[...articles, ...dates].map(article => <ContentRow content={article} key={article.photo} />)}
       </div>
+      <Footer />
     </main>
   );
 }
