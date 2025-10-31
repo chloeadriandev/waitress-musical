@@ -8,13 +8,29 @@
     height: 100dvh;
     width: 100dvw;
 
+    &[data-images-loaded="true"]>div[data-container="loading"],
+    &[data-images-loaded="false"]>*:not([data-container="loading"]) {
+        display: none;
+    }
+
+    &>div[data-container="loading"] {
+        @include mixins.flex(row, center, center);
+        height: 100%;
+        width: 100%;
+        background-color: variables.$marble;
+
+        &>img {
+            animation: spinning 2s linear infinite;
+        }
+    }
+
     &>img {
         height: 100%;
         width: 100%;
         object-fit: cover;
     }
 
-    &>div {
+    &>div[data-container="content"] {
         @include mixins.flex(column, flex-start, flex-start);
         position: absolute;
         height: 100%;
@@ -42,7 +58,7 @@
                 &:first-child {
                     object-position: top;
                     left: -25% !important;
-                    animation: slideFromRight 0.8s ease both;
+                    animation: slideFromRight 0.8s ease 0.5s both;
 
                     @include breakpoints.mobile {
                         left: 0 !important;
@@ -53,7 +69,7 @@
                     transform: rotate(-180deg);
                     object-position: top;
                     left: 75% !important;
-                    animation: slideFromRightFlipped 0.8s ease 1.6s both;
+                    animation: slideFromRightFlipped 0.8s ease 2.1s both;
 
                     @include breakpoints.mobile {
                         left: 0 !important;
@@ -69,7 +85,7 @@
                 top: 50%;
                 transform: translateY(-50%);
                 z-index: 2;
-                animation: slideFromRightCentered 0.8s ease 0.8s both;
+                animation: slideFromRightCentered 0.8s ease 1.3s both;
 
                 @include breakpoints.mobile {
                     margin: calc(functions.pixelsToRem(variables.$margin-mobile) / 2) functions.pixelsToRem(variables.$margin-mobile) 0;
@@ -103,7 +119,7 @@
             cursor: pointer;
             position: relative;
             overflow: hidden;
-            animation: slideFromBottom 0.8s ease 2.4s both;
+            animation: slideFromBottom 0.8s ease 2.9s both;
 
             @include breakpoints.mobile {
                 padding-bottom: functions.pixelsToRem(20);
@@ -142,7 +158,7 @@
 
 @keyframes slideFromRight {
     from {
-        transform: translateX(100%);
+        transform: translateX(250%);
     }
 
     to {
@@ -177,5 +193,15 @@
 
     to {
         margin-bottom: 0;
+    }
+}
+
+@keyframes spinning {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
     }
 }

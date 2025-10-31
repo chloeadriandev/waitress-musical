@@ -1,5 +1,4 @@
 import "./globals.scss";
-import styles from "./layout.module.scss";
 import localFont from "next/font/local";
 import { Archivo_Narrow } from "next/font/google";
 import type { Metadata } from "next";
@@ -22,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={canter.className + " " + archivoNarrow.className}>
-      <body className={styles.body}>
+      <body>
         {children}
       </body>
     </html>
