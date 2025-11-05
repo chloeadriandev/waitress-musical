@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+![Banner](READMEbanner.jpg)
 
-## Getting Started
+# 🥧 Waitress: The Musical
 
-First, run the development server:
+**A redesign of the official Waitress musical website, celebrating the show’s 10th anniversary tour.**  
+Created in 2025 to reimagine the site’s structure, accessibility, and performance while preserving its charm.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🌟 Overview
+This project reimagines the official **Waitress: the Musical** website with a focus on **accessibility, responsiveness, and performance**, all while maintaining the show’s warmth and playful identity.  
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The redesign preserves the signature color palette and imagery, modernizes the layout, and improves the overall user experience.  
+It also highlights promotional content like tour dates and cast photos through optimized visuals and smooth transitions.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Built with **Next.js**, **TypeScript**, and **Sass**, this project merges technical precision with design sensibility, bridging stage storytelling and interactive digital experiences.
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 🖥️ Live demo
+👉 [**Visit Waitress: The Musical**](https://waitressmusical.chloeadrian.dev/)  
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+You can also see its dedicated project page on my [**portfolio**](https://chloeadrian.dev/en/project/waitress).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## ⚙️ Tech stack
+- **Next.js** for structure, routing, and performance  
+- **TypeScript** for type safety and maintainability  
+- **Sass** for clean, organized styling  
+- **Figma** for visual design and component layout  
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🧠 Key features
+- Redesigned responsive layout optimized for all devices  
+- Accessible navigation and content hierarchy  
+- Modernized visuals while preserving brand identity  
+- Smooth transitions and subtle animations  
+- Image optimization for faster load times  
+
+---
+
+## 🕊️ Reflection
+This project highlights my ability to **merge design and development**, translating a strong existing brand into a refined, inclusive web experience.  
+It also reflects my approach to performance and attention to detail, building something that feels theatrical, heartfelt, and fast.
+
+---
+
+Thanks for reading, and enjoy the show!  
+Chloé Adrian ✨
